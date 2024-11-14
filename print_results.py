@@ -62,5 +62,36 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
-    None
+    # Print model architecture used
+    print(f"\n*** Results Summary for CNN Model Architecture {model.upper()} ***")
+    print(f"Number of Images: {results_stats_dic['n_images']}")
+    print(f"Number of Dog Images: {results_stats_dic['n_dogs_img']}")
+    print(f"Number of 'Not-a' Dog Images: {results_stats_dic['n_notdogs_img']}")
+    
+    # Print overall statistics
+    print("\n*** Summary of Statistics ***")
+    for stat, value in results_stats_dic.items():
+        if stat.startswith('pct'):
+            print(f"{stat}: {value:.1f}%")
+        else:
+            print(f"{stat}: {value}")
+    
+    # Print incorrect dog classifications if flag is True
+    if print_incorrect_dogs and results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images']:
+        print("\n*** Incorrect Dog/Not-a-Dog Classifications ***")
+        for filename, result in results_dic.items():
+            is_dog = result[3]
+            classified_as_dog = result[4]
+            if is_dog != classified_as_dog:
+                print(f"Filename: {filename} - Pet Label: {result[0]}, Classifier Label: {result[1]}")
+    
+    # Print incorrect breed classifications if flag is True
+    if print_incorrect_breed and results_stats_dic['n_correct_breed'] != results_stats_dic['n_correct_dogs']:
+        print("\n*** Incorrect Dog Breed Classifications ***")
+        for filename, result in results_dic.items():
+            is_dog = result[3]
+            classified_as_dog = result[4]
+            label_match = result[2]
+            if is_dog and classified_as_dog and not label_match:
+                print(f"Filename: {filename} - Pet Label: {result[0]}, Classifier Label: {result[1]}")
                 
