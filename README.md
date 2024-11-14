@@ -1,2 +1,3 @@
 # AWS-AI-ML-projects
-AWS AI ML scholarship reciepient. All projects under one repo. WInter Cohort 2024
+AWS AI ML scholarship reciepient. Winter Cohort 2024. 
+
