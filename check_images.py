@@ -40,14 +40,7 @@ from print_results import print_results
 # Main program function defined below
 def main():
     # TODO 0: Measures total program runtime by collecting start time
-    start_time = time.time()
-    sleep(75)
-    end_time = time()
-    tot_time = end_time - start_time
-    print("\n** Total Elapsed Runtime:",tot_time, " in seconds.")
-    print("\nTotal Elapsed Runtime:", str( int( (tot_time / 3600) ) ) + ":" +
-          str( int(  ( (tot_time % 3600) / 60 )  ) ) + ":" + 
-          str( int(  ( (tot_time % 3600) % 60 ) ) ) ) 
+    start_time = time()
     # TODO 1: Define get_input_args function within the file get_input_args.py
     # This function retrieves 3 Command Line Arugments from user as input from
     # the user running the program from a terminal window. This function returns
@@ -122,13 +115,13 @@ def main():
     print_results(results, results_stats, in_arg.arch, True, True)
     
     # TODO 0: Measure total program runtime by collecting end time
-    end_time = time.time()
+    end_time = time()
     
     # TODO 0: Computes overall runtime in seconds & prints it in hh:mm:ss format
     tot_time = end_time - start_time
     print("\n** Total Elapsed Runtime:",
           str(int((tot_time/3600)))+":"+str(int((tot_time%3600)/60))+":"
-          +str(int((tot_time%3600)%60)) )
+          +str(int((tot_time%3600)%60)))
     
 
 # Call to main function to run the program
